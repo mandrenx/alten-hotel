@@ -21,9 +21,7 @@ public interface BaseService<T> extends BaseRepository<T>
 
     default LocalDateTime getFormattedDate()
     {
-        return LocalDateTime.parse(
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"))
-        );
+        return LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
     }
 
     default UUID toUUID(String uuid)

@@ -1,8 +1,6 @@
 # alten-hotel Project
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
-
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+This project uses Quarkus, the Supersonic Subatomic Java Framework: https://quarkus.io/ .
 
 ## Stacks
 - Java 17
@@ -11,21 +9,33 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 - MapStruct
 - RESTEasy Reactive
 - Hibernate Panache
+- Docker | Docker Compose
+- RestClient
+- Postgres
+- Swagger
 
-## For RUN
+## For project running
+Inside root folder from project:
 - docker-compose -f resources/compose.yaml up -d
-- mvn compile quarkus:dev -Ddebug=5001
+- mvn compile quarkus:dev
 
-## Propose Solution
-There 2 main packages
-### commons
-Resources used in whole project
-### modules
-guest, bedroom, booking, integration
+## Components
+There is two main packages in the project: commons and modules (guest, bedroom, booking and integration)
+### COMMONS
+It was been implemented interfaces to simplify some common operations
+### MODULES
+For communication between 4 modules RESTEasy Reactive and RestClient were used
+### guest
+- Save or update guest data
+- It's possible retrieve them for e-mail or phone number or full name
+### bedroom
+- When initialize the project some bedrooms are added
+- It's possible change the status bedroom between AVAILABLE and UNAVAILABLE
+### booking
+- Allow search about available bedrooms between two different dates
+- To save a reservation it's necessary to make a survey on the available rooms and have the guest and room data
+### integration
+- Make a link between the another modules
+- When has been necessary save 
 
 
-## Related Guides
-
-- RESTEasy Reactive ([guide](https://quarkus.io/guides/resteasy-reactive)): A JAX-RS implementation utilizing build time
-  processing and Vert.x. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions
-  that depend on it.

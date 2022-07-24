@@ -41,14 +41,14 @@ public class BedroomCreateResource
                     responseCode = "200",
                     description = "Save a new Bedroom",
                     content = @Content(schema = @Schema(implementation = BedroomResponse.class))),
-            @APIResponse(responseCode = "404", description = "Bedroom not saved"),
             @APIResponse(responseCode = "500", description = "Internal Server Error")
     })
     public RestResponse<BedroomResponse> create(@Valid BedroomRequest request)
     {
-        var room = this.serializer.toEntity(request);
         var response = this.serializer.toResponse(
-                this.service.create(room)
+                this.service.create(
+                        this.serializer.toEntity(request)
+                )
         );
         logger.info("Response: {}", response);
         return RestResponse.ResponseBuilder

@@ -16,9 +16,7 @@ public class IntegrationService
 
     private LocalDateTime now()
     {
-        return LocalDateTime.parse(
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"))
-        );
+        return LocalDateTime.parse(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
     }
 
     public void create(UUID bedroomID, UUID bookingID, UUID guestID)

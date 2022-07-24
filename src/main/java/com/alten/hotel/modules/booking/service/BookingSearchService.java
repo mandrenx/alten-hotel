@@ -7,7 +7,6 @@ import com.alten.hotel.modules.booking.resource.BookingParameterRequest;
 import com.alten.hotel.modules.booking.type.AccommodationType;
 import com.alten.hotel.modules.booking.type.BookingOperationType;
 import com.alten.hotel.modules.booking.type.BookingStatusType;
-import com.alten.hotel.modules.booking.type.OccupationType;
 import com.alten.hotel.modules.guest.exception.errors.BookingError;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -38,7 +37,7 @@ public class BookingSearchService implements BookingService
         ).entity();
     }
 
-    private void validatePeriod(LocalDateTime entryAT, LocalDateTime exitAT)
+    private void validatePeriodForBooking(LocalDateTime entryAT, LocalDateTime exitAT)
     {
         var previousDays = Period.between(LocalDateTime.now().toLocalDate(), entryAT.toLocalDate()).getDays();
         var hostedDays = Period.between(entryAT.toLocalDate(), exitAT.toLocalDate()).getDays();
@@ -52,7 +51,7 @@ public class BookingSearchService implements BookingService
         var entryAT = this.toLocalDateTime(firstDay);
         var exitAT = this.toLocalDateTime(lastDay);
 
-        this.validatePeriod(entryAT, exitAT);
+        this.validatePeriodForBooking(entryAT, exitAT);
 
         return this.execute(
                 this.repo,
