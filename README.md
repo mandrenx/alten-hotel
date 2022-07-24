@@ -35,7 +35,4 @@ For communication between 4 modules RESTEasy Reactive and RestClient were used
 - Allow search about available bedrooms between two different dates
 - To save a reservation it's necessary to make a survey on the available rooms and have the guest and room data
 ### integration
-- Make a link between the another modules
-- When has been necessary save 
-
-
+- Persist data used between different modules
