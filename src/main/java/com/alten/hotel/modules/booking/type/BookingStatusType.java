@@ -4,5 +4,6 @@ public enum BookingStatusType
 {
     CANCELED,
     CONFIRMED,
+    UNFILLED,
     UNDER_PROCESSING
 }

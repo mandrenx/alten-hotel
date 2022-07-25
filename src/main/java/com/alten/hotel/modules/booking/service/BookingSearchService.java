@@ -68,7 +68,7 @@ public class BookingSearchService implements BookingService
         ).list();
     }
 
-    public Booking findByStatus(String status)
+    public List<Booking> findByStatus(String status)
     {
         return this.execute(
                 this.repo,
@@ -82,6 +82,6 @@ public class BookingSearchService implements BookingService
                         ),
                         null
                 )
-        ).entity();
+        ).list();
     }
 }

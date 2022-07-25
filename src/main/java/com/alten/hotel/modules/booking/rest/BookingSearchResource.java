@@ -83,8 +83,8 @@ public class BookingSearchResource
     }
 
     @GET
-    @Path("/occupation")
-    @Operation(description = "List bookings by occupation")
+    @Path("/status")
+    @Operation(description = "List bookings by status")
     @APIResponses(value = {
             @APIResponse(
                     responseCode = "200",
@@ -93,10 +93,10 @@ public class BookingSearchResource
             @APIResponse(responseCode = "404", description = "Booking not found"),
             @APIResponse(responseCode = "500", description = "Internal Server Error")
     })
-    public RestResponse<BookingResponse> findByOccupation(@Parameter(required = true) @RestQuery("occupation") String occupation)
+    public RestResponse<List<BookingResponse>> findByStatus(@Parameter(required = true) @RestQuery("status") String status)
     {
         var response = this.serializer.toResponse(
-                this.service.findByStatus(occupation)
+                this.service.findByStatus(status)
         );
         logger.info("findByOccupation | Response: {}", response);
         return RestResponse.ResponseBuilder

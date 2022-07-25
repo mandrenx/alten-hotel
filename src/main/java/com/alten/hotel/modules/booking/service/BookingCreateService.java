@@ -10,6 +10,7 @@ import com.alten.hotel.modules.guest.exception.errors.BookingError;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -32,8 +33,8 @@ public class BookingCreateService implements BookingService
     {
         if (this.verifyBookingData(request)) this.throwBookingException(BookingError.BKG0002);
 
-        request.setEntryAT(request.getRegisteredAT().plusDays(1));
-        request.setExitAT(request.getEntryAT().plusDays(2));
+        request.setEntryAT(LocalDateTime.now().withHour(0).withMinute(0).withSecond(0));
+        request.setExitAT(LocalDateTime.now().withHour(23).withMinute(59).withSecond(59));
 
         var booking = this.execute(this.repo,
                 new BookingParameterRequest(
