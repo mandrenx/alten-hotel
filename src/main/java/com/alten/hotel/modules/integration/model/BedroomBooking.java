@@ -1,5 +1,8 @@
 package com.alten.hotel.modules.integration.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -30,7 +33,29 @@ public class BedroomBooking implements Serializable
     public BedroomBooking() { }
 
     public UUID getUuid() { return uuid; }
-    public UUID getBookingID() { return bookingID; }
+    public void setUuid(UUID uuid) { this.uuid = uuid; }
     public UUID getBedroomID() { return bedroomID; }
+    public void setBedroomID(UUID bedroomID) { this.bedroomID = bedroomID; }
+    public UUID getBookingID() { return bookingID; }
+    public void setBookingID(UUID bookingID) { this.bookingID = bookingID; }
     public LocalDateTime getAddedAT() { return addedAT; }
+    public void setAddedAT(LocalDateTime addedAT) { this.addedAT = addedAT; }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BedroomBooking that = (BedroomBooking) o;
+
+        return new EqualsBuilder().append(getUuid(), that.getUuid()).append(getBedroomID(), that.getBedroomID()).append(getBookingID(), that.getBookingID()).append(getAddedAT(), that.getAddedAT()).isEquals();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return new HashCodeBuilder(17, 37).append(getBedroomID()).append(getBookingID()).append(getAddedAT()).toHashCode();
+    }
 }

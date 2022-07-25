@@ -46,9 +46,10 @@ public class BedroomBookingCreateResource
     })
     public RestResponse<BedroomBookingResponse> createBedroomBooking(@Valid BedroomBookingRequest request)
     {
-        var bookingGuest = this.serializer.toEntity(request);
         var response = this.serializer.toResponse(
-                this.service.create(bookingGuest)
+                this.service.create(
+                        this.serializer.toEntity(request)
+                )
         );
         logger.info("Response: {}", response);
         return RestResponse.ResponseBuilder

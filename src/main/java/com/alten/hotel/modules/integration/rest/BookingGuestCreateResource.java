@@ -2,7 +2,7 @@ package com.alten.hotel.modules.integration.rest;
 
 import com.alten.hotel.modules.integration.resource.BookingGuestRequest;
 import com.alten.hotel.modules.integration.resource.BookingGuestResponse;
-import com.alten.hotel.modules.integration.serializer.BookingGuestSerializer;
+import com.alten.hotel.modules.integration.serializer.BookingGuestResourceSerializer;
 import com.alten.hotel.modules.integration.service.BookingGuestCreateService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -30,7 +30,7 @@ public class BookingGuestCreateResource
 {
     private static final Logger logger = LoggerFactory.getLogger(BookingGuestCreateResource.class);
 
-    @Inject BookingGuestSerializer serializer;
+    @Inject BookingGuestResourceSerializer serializer;
 
     @Inject BookingGuestCreateService service;
 
@@ -46,9 +46,10 @@ public class BookingGuestCreateResource
     })
     public RestResponse<BookingGuestResponse> createBookingGuest(@Valid BookingGuestRequest request)
     {
-        var bookingGuest = this.serializer.toEntity(request);
         var response = this.serializer.toResponse(
-                this.service.create(bookingGuest)
+                this.service.create(
+                        this.serializer.toEntity(request)
+                )
         );
         logger.info("create | Response: {}", response);
         return RestResponse.ResponseBuilder

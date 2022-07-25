@@ -1,8 +1,8 @@
-package com.alten.hotel.modules.booking.internal;
+package com.alten.hotel.modules.booking.internal.service;
 
-import com.alten.hotel.modules.integration.resource.BedroomBookingRequest;
+import com.alten.hotel.modules.booking.internal.resource.BedroomIntegrationRequest;
+import com.alten.hotel.modules.booking.internal.resource.BookingIntegrationRequest;
 import com.alten.hotel.modules.integration.resource.BedroomBookingResponse;
-import com.alten.hotel.modules.integration.resource.BookingGuestRequest;
 import com.alten.hotel.modules.integration.resource.BookingGuestResponse;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.jboss.resteasy.reactive.RestQuery;
@@ -17,12 +17,12 @@ import java.util.UUID;
 public interface IntegrationClient
 {
     @POST
-    @Path("/bedroom-booking")
-    BedroomBookingResponse createBedroomBooking(BedroomBookingRequest request);
+    @Path("/create/bedroom-booking")
+    BedroomBookingResponse createBedroomBooking(BedroomIntegrationRequest request);
 
     @POST
-    @Path("/booking-guest")
-    BookingGuestResponse createBookingGuest(BookingGuestRequest request);
+    @Path("/create/booking-guest")
+    BookingGuestResponse createBookingGuest(BookingIntegrationRequest request);
 
     @GET
     @Path("/search/bookings")

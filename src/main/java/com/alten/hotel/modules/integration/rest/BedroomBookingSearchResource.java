@@ -2,7 +2,6 @@ package com.alten.hotel.modules.integration.rest;
 
 import com.alten.hotel.modules.integration.resource.BedroomIntegrationResponse;
 import com.alten.hotel.modules.integration.resource.BookingIntegrationResponse;
-import com.alten.hotel.modules.integration.resource.GuestIntegrationResponse;
 import com.alten.hotel.modules.integration.service.BedroomBookingSearchService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;

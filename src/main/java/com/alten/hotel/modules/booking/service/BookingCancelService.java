@@ -1,6 +1,6 @@
 package com.alten.hotel.modules.booking.service;
 
-import com.alten.hotel.modules.booking.internal.IntegrationService;
+import com.alten.hotel.modules.booking.internal.service.IntegrationService;
 import com.alten.hotel.modules.booking.repository.BookingRepository;
 import com.alten.hotel.modules.booking.resource.BookingParameterRequest;
 import com.alten.hotel.modules.booking.type.BookingOperationType;

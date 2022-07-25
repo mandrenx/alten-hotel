@@ -23,9 +23,6 @@ public class Booking implements Serializable
     @Column(name = "idbkg", updatable = false, nullable = false)
     private UUID uuid;
 
-    @Column(name = "bedroom", length = 10)
-    private String room;
-
     @Column(name = "status", length = 20)
     @Enumerated(EnumType.STRING)
     private BookingStatusType status;
@@ -50,8 +47,6 @@ public class Booking implements Serializable
 
     public UUID getUuid() { return uuid; }
     public void setUuid(UUID uuid) { this.uuid = uuid; }
-    public String getRoom() { return room; }
-    public void setRoom(String room) { this.room = room; }
     public AccommodationType getAccommodation() { return accommodation; }
     public void setAccommodation(AccommodationType accommodation) { this.accommodation = accommodation; }
     public BookingStatusType getStatus() { return status; }
@@ -74,12 +69,12 @@ public class Booking implements Serializable
 
         Booking booking = (Booking) o;
 
-        return new EqualsBuilder().append(getUuid(), booking.getUuid()).append(getRoom(), booking.getRoom()).append(getStatus(), booking.getStatus()).append(getAccommodation(), booking.getAccommodation()).append(getEntryAT(), booking.getEntryAT()).append(getExitAT(), booking.getExitAT()).append(getRegisteredAT(), booking.getRegisteredAT()).append(getUpdatedAT(), booking.getUpdatedAT()).isEquals();
+        return new EqualsBuilder().append(getUuid(), booking.getUuid()).append(getStatus(), booking.getStatus()).append(getAccommodation(), booking.getAccommodation()).append(getEntryAT(), booking.getEntryAT()).append(getExitAT(), booking.getExitAT()).append(getRegisteredAT(), booking.getRegisteredAT()).append(getUpdatedAT(), booking.getUpdatedAT()).isEquals();
     }
 
     @Override
     public int hashCode()
     {
-        return new HashCodeBuilder(17, 37).append(getRoom()).append(getStatus()).append(getAccommodation()).append(getEntryAT()).append(getExitAT()).append(getRegisteredAT()).toHashCode();
+        return new HashCodeBuilder(17, 37).append(getStatus()).append(getAccommodation()).append(getEntryAT()).append(getExitAT()).append(getRegisteredAT()).toHashCode();
     }
 }

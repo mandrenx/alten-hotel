@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public record BookingResponse(UUID uuid,
-                              String room,
                               BookingStatusType status,
                               AccommodationType accommodation,
 
@@ -36,6 +35,6 @@ public record BookingResponse(UUID uuid,
                               LocalDateTime updatedAT) {
 
     public static BookingResponse build() {
-        return new BookingResponse(null, null, null, null, null, null, null, null);
+        return new BookingResponse(null, null, null, null, null, null, null);
     }
 }

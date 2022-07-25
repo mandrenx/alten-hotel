@@ -8,4 +8,4 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "cdi", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface BookingGuestSerializer extends BaseSerializer<BookingGuest, BookingGuestRequest, BookingGuestResponse> { }
+public interface BookingGuestResourceSerializer extends BaseSerializer<BookingGuest, BookingGuestRequest, BookingGuestResponse> { }
