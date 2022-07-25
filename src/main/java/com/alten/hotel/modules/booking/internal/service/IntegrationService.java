@@ -21,7 +21,7 @@ public class IntegrationService
     }
 
     @Transactional
-    public void create(UUID bedroomID, UUID bookingID, UUID guestID)
+    public void createBookingGuestAndBedroomBooking(UUID bedroomID, UUID bookingID, UUID guestID)
     {
         this.client.createBookingGuest(
                 new BookingIntegrationRequest(null, bookingID, guestID, this.now())

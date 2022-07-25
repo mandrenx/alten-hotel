@@ -43,7 +43,7 @@ public class BookingCreateService implements BookingService
                 )
         ).entity();
 
-        this.integrationService.create(bedroomID, booking.getUuid(), guestID);
+        this.integrationService.createBookingGuestAndBedroomBooking(bedroomID, booking.getUuid(), guestID);
 
         return booking;
     }

@@ -10,8 +10,5 @@ import javax.transaction.Transactional;
 public class BedroomBookingCreateService implements BaseService<BedroomBooking>
 {
     @Transactional
-    public BedroomBooking create(BedroomBooking bedroomBooking)
-    {
-        return this.insertUpdate(bedroomBooking);
-    }
+    public BedroomBooking create(BedroomBooking bedroomBooking) { return this.insertUpdate(bedroomBooking); }
 }
